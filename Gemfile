@@ -4,8 +4,8 @@ ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 gem 'rails_12factor', group: :production
-gem 'dragonfly', git: "https://github.com/markevans/dragonfly", ref: "527619dfa5312353a37a83a62fd1cc67d58568af"
-
+gem 'dragonfly', git: "https://github.com/markevans/dragonfly", ref: "a8597eded3465063673dc6224f6e81c8c27dae11"
+gem 'dragonfly-s3_data_store', git: "https://github.com/markevans/dragonfly-s3_data_store", ref: "f38507f4ac42d63e8d03cf67aa0fe55f43adf240"
 
 # Use postgresql as the database for Active Record
 gem 'pg'

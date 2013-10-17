@@ -1,11 +1,20 @@
 GIT
   remote: https://github.com/markevans/dragonfly
-  revision: 527619dfa5312353a37a83a62fd1cc67d58568af
-  ref: 527619dfa5312353a37a83a62fd1cc67d58568af
+  revision: a8597eded3465063673dc6224f6e81c8c27dae11
+  ref: a8597eded3465063673dc6224f6e81c8c27dae11
   specs:
-    dragonfly (0.9.15)
+    dragonfly (1.0)
       multi_json (~> 1.0)
       rack
+
+GIT
+  remote: https://github.com/markevans/dragonfly-s3_data_store
+  revision: f38507f4ac42d63e8d03cf67aa0fe55f43adf240
+  ref: f38507f4ac42d63e8d03cf67aa0fe55f43adf240
+  specs:
+    dragonfly-s3_data_store (0.0.1)
+      dragonfly (~> 1.0)
+      fog
 
 GEM
   remote: https://rubygems.org/
@@ -45,7 +54,20 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     erubis (2.7.0)
+    excon (0.27.6)
     execjs (2.0.2)
+    fog (1.16.0)
+      builder
+      excon (~> 0.27.0)
+      formatador (~> 0.2.0)
+      mime-types
+      multi_json (~> 1.0)
+      net-scp (~> 1.1)
+      net-ssh (>= 2.1.3)
+      nokogiri (~> 1.5)
+      ruby-hmac
+      unicode (~> 0.4.4)
+    formatador (0.2.4)
     hike (1.2.3)
     i18n (0.6.5)
     jbuilder (1.5.2)
@@ -59,8 +81,14 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25)
+    mini_portile (0.5.1)
     minitest (4.7.5)
     multi_json (1.8.2)
+    net-scp (1.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.7.0)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
     pg (0.17.0)
     polyglot (0.3.3)
     rack (1.5.2)
@@ -87,6 +115,7 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    ruby-hmac (0.4.0)
     sass (3.2.12)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -117,6 +146,7 @@ GEM
     uglifier (2.2.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    unicode (0.4.4)
 
 PLATFORMS
   ruby
@@ -124,6 +154,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   dragonfly!
+  dragonfly-s3_data_store!
   jbuilder (~> 1.2)
   jquery-rails
   pg
