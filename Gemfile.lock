@@ -92,6 +92,8 @@ GEM
     pg (0.17.0)
     polyglot (0.3.3)
     rack (1.5.2)
+    rack-cache (1.2)
+      rack (>= 0.4)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.0)
@@ -158,6 +160,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   pg
+  rack-cache
   rails (= 4.0.0)
   rails_12factor
   sass-rails (~> 4.0.0)
