@@ -7,10 +7,11 @@ Upload your photos, and have them published to various online platforms on a reg
 == Installation
 
 == Config
+1. Set up your S3 details
 
-  1. Set up your S3 details
-```
-heroku config:set S3_BUCKET=<bucket-name>
-heroku config:set S3_KEY=<s3-key>
-heroku config:set S3_SECRET=<s3-secret>
-```
+        heroku config:set S3_BUCKET=<bucket-name>
+        heroku config:set S3_KEY=<s3-key>
+        heroku config:set S3_SECRET=<s3-secret>
+
+1. Set up your FB App Details
+  
