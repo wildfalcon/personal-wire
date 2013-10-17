@@ -1,28 +1,16 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Personal-wire is an open source tool for photographers. 
 
-Things you may want to cover:
+Upload your photos, and have them published to various online platforms on a regular timeline. 
 
-* Ruby version
+== Installation
 
-* System dependencies
+== Config
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+  1. Set up your S3 details
+     '''
+     heroku config:set S3_BUCKET=<bucket-name>
+     heroku config:set S3_KEY=<s3-key>
+     heroku config:set S3_SECRET=<s3-secret>
+		'''
