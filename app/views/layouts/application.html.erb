@@ -7,6 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
+  <div id="menu">
+    <%= content_tag(:h2, "Available Destinations") %>
+    <%= display_available_destinations %>
+    <%= content_tag(:h2, "Unvailable Destinations") %>
+    <%= display_unavailable_destinations %>
+  </div>
 
 <%= yield %>
 
