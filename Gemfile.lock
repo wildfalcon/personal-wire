@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/markevans/dragonfly
+  revision: 527619dfa5312353a37a83a62fd1cc67d58568af
+  ref: 527619dfa5312353a37a83a62fd1cc67d58568af
+  specs:
+    dragonfly (0.9.15)
+      multi_json (~> 1.0)
+      rack
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -114,6 +123,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  dragonfly!
   jbuilder (~> 1.2)
   jquery-rails
   pg
