@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  destination_id: 1
+  destination_type: MyString
+  enabled: false
+
+two:
+  destination_id: 1
+  destination_type: MyString
+  enabled: false

@@ -1,9 +1,19 @@
 PersonalWire::Application.routes.draw do
 
+  get "destinations/create"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   root 'home#index'
+
+  get 'auth/:destinations/callback' => 'destinations#make_avialble' 
+
+  resources :destinations do 
+    member do
+      get :enable
+      get :disable
+    end
+  end
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

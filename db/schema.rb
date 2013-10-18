@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131017144335) do
+ActiveRecord::Schema.define(version: 20131018101113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "destinations", force: true do |t|
+    t.integer  "destination_strategy_id"
+    t.string   "destination_strategy_type"
+    t.boolean  "enabled",                   default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "destinations_facebook_pages", force: true do |t|
+    t.string   "name"
+    t.string   "uid"
+    t.string   "token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "destinations_facebooks", force: true do |t|
     t.string   "name"
