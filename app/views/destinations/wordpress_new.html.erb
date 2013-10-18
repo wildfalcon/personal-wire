@@ -1,0 +1,9 @@
+<%= form_tag(wordpress_create_path, method: "post") do %>
+  <%= label_tag(:host, "Hostname:") %>
+  <%= text_field_tag(:host) %>
+  <%= label_tag(:username, "Username:") %>
+  <%= text_field_tag(:username) %>
+  <%= label_tag(:password, "Password:") %>
+  <%= password_field_tag(:password) %>
+  <%= submit_tag("Add") %>
+<% end %>
