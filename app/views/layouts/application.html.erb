@@ -9,15 +9,17 @@
 <body>
   
   <div id="menu">
-    <h1>Destinations Menu</h1>
+    <h1>Destinations</h1>
     <%= content_tag(:h2, "Enabled Destinations") %>
     <%= display_enabled_destinations %>
     <%= content_tag(:h2, "Configured Destinations") %>
     <%= display_configured_destinations %>
-    <%= content_tag(:h2, "Available Destinations") %>
-    <%= display_available_destinations %>
-    <%= content_tag(:h2, "Unvailable Destinations") %>
-    <%= display_unavailable_destinations %>
+
+		<h1>Services</h1>
+    <%= content_tag(:h2, "Available Services") %>
+    <%= display_available_services %>
+    <%= content_tag(:h2, "Unvailable Services") %>
+    <%= display_unavailable_services %>
   </div>
 
 <h1>Page Starts Here</h1>

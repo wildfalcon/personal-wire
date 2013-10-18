@@ -1,10 +1,10 @@
 class Destinations::Wordpress < ActiveRecord::Base
 
-  def self.enabled?
+  def self.available?
     true
   end
 
-  def self.destination_service_name
+  def self.service_name
     "Wordpress"
   end
 
@@ -20,7 +20,7 @@ class Destinations::Wordpress < ActiveRecord::Base
   has_one :destination, as: :destination_strategy
 
   def destination_name
-    "#{self.class.destination_service_name} - #{host}"
+    "#{self.class.service_name} - #{host}"
   end
 
 

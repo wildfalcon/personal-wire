@@ -1,9 +1,9 @@
 class Destinations::FacebookPage < ActiveRecord::Base
-  def self.enabled?
+  def self.available?
     Destinations::Facebook.count > 0
   end
 
-  def self.destination_service_name
+  def self.service_name
     "Facebook Page"
   end
   
@@ -26,7 +26,7 @@ class Destinations::FacebookPage < ActiveRecord::Base
   has_one :destination, as: :destination_strategy
 
   def destination_name
-    "#{self.class.destination_service_name} - #{name}"
+    "#{self.class.service_name} - #{name}"
   end
 
   def post(photo, title = "New Photo", caption = "New photo uploaded")

@@ -2,7 +2,7 @@ class DestinationsController < ApplicationController
   def new_destination_service
     user_hash = env["omniauth.auth"]
     provider = user_hash["provider"]
-    Destinations.find_by_provider(provider).first.register(user_hash)
+    Services.find_by_provider(provider).first.register(user_hash)
     redirect_to root_path
   end
   

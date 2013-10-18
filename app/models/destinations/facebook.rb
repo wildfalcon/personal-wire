@@ -1,10 +1,10 @@
 class Destinations::Facebook < ActiveRecord::Base
 
-  def self.enabled?
+  def self.available?
     ENV['FB_ID'].present? && ENV['FB_SECRET'].present?
   end
 
-  def self.destination_service_name
+  def self.service_name
     "Facebook"
   end
   
@@ -31,7 +31,7 @@ class Destinations::Facebook < ActiveRecord::Base
     has_one :destination, as: :destination_strategy
   
   def destination_name
-    "#{self.class.destination_service_name} - #{name}"
+    "#{self.class.service_name} - #{name}"
   end
   
   def pages
