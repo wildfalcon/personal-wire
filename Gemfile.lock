@@ -16,6 +16,15 @@ GIT
       dragonfly (~> 1.0)
       fog
 
+GIT
+  remote: https://github.com/wildfalcon/Facepost
+  revision: ba7dff9c35158f21aff383001d24e1e707264825
+  ref: ba7dff9c35158f21aff383001d24e1e707264825
+  specs:
+    facepost (0.0.5)
+      json
+      rest-client
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -138,6 +147,8 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     ruby-hmac (0.4.0)
     sass (3.2.12)
     sass-rails (4.0.1)
@@ -178,6 +189,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   dragonfly!
   dragonfly-s3_data_store!
+  facepost!
   jbuilder (~> 1.2)
   jquery-rails
   omniauth

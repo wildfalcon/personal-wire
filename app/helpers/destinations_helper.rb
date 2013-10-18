@@ -30,11 +30,22 @@ module DestinationsHelper
 
   def display_available_destinations
     content_tag(:ul) do
-      Destinations.available.map(&:destination_service_name).map  do |name|
-        concat(content_tag(:li, name))
-      end.join('').html_safe
-    end
-  end
+      Destinations.available.each  do |destination|
+         name = destination.destination_service_name
+         
+         paths = destination.config_path
+
+         links = paths.map{|name, path| link_to(name, path)}.join
+         # raise links
+         concat(content_tag(:li) do
+           [content_tag(:span, name),
+             links
+             ].join(' ').html_safe
+           end)
+         end.join('').html_safe
+       end
+     end
+      
 
   def display_unavailable_destinations
     content_tag(:ul) do

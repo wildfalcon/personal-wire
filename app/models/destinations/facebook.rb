@@ -12,8 +12,11 @@ class Destinations::Facebook < ActiveRecord::Base
     "facebook"
   end
   
+  def self.config_path
+    {"config" => "/auth/facebook"}
+  end
+  
   def self.register(user_hash)
-    logger.info user_hash
     name = user_hash["info"]["name"]
     uid = user_hash["uid"]
     token = user_hash["credentials"]["token"]
@@ -29,6 +32,10 @@ class Destinations::Facebook < ActiveRecord::Base
   
   def destination_name
     "#{self.class.destination_service_name} - #{name}"
+  end
+  
+  def pages
+    Facepost.list_pages(token)
   end
 
 end

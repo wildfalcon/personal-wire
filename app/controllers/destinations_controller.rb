@@ -1,9 +1,38 @@
 class DestinationsController < ApplicationController
-  def make_avialble
+  def new_destination_service
     user_hash = env["omniauth.auth"]
     provider = user_hash["provider"]
     Destinations.find_by_provider(provider).first.register(user_hash)
+    redirect_to root_path
   end
+  
+  def list_facebook_page
+    @facebook_id = params[:facebook_id]
+    facebook = Destinations::Facebook.find(@facebook_id)
+    @pages = facebook.pages
+  end
+  
+  def add_facebook_page
+    @facebook_id = params[:facebook_id]
+    @page_uid = params[:uid]
+    facebook = Destinations::Facebook.find(@facebook_id)
+    pages = facebook.pages
+    page = pages.select{|p| p[:uid]==@page_uid}.first
+
+    uid = page[:uid]
+    name = page[:name]
+    token = page[:token]
+
+    facebook_page = Destinations::FacebookPage.find_or_create_by_uid(uid)
+    facebook_page.create_destination unless facebook_page.destination.present?
+    facebook_page.token = token
+    facebook_page.name = name
+    facebook_page.save
+    redirect_to root_path
+    
+
+  end
+    
   
   def enable
     destination = Destination.find_by_id params[:id]
