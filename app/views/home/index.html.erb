@@ -1,0 +1,14 @@
+<h1>Unpublished Photo</h1>
+<% Photo.unpublished.all.each do |photo| %>
+
+  <img src="<%= photo.photo.thumb("500x500").url %>"/>
+  
+<% end %>
+
+
+<h1>Published Photo</h1>
+<% Photo.published.all.each do |photo| %>
+
+  <img src="<%= photo.photo.thumb("500x500").url %>"/>
+  
+<% end %>
