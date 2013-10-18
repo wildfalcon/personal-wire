@@ -29,4 +29,9 @@ class Destinations::FacebookPage < ActiveRecord::Base
     "#{self.class.destination_service_name} - #{name}"
   end
 
+  def post(photo, title = "New Photo", caption = "New photo uploaded")
+    Facepost.post_photo(uid, token, photo.photo, "#{title} #{caption}")
+  end
+
+
 end
