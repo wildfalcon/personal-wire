@@ -12,6 +12,24 @@ class DestinationsController < ApplicationController
     @pages = facebook.pages
   end
   
+  def wordpress_new
+  end
+  
+  def wordpress_create
+    host = params[:host]
+    username = params[:username]
+    password = params[:password]
+    
+    
+    wordpress = Destinations::Wordpress.find_or_create_by_host(host)
+    wordpress.create_destination unless wordpress.destination.present?
+    wordpress.username = username
+    wordpress.password = password
+    wordpress.save
+    redirect_to root_path
+  end
+  
+  
   def add_facebook_page
     @facebook_id = params[:facebook_id]
     @page_uid = params[:uid]

@@ -9,6 +9,8 @@ PersonalWire::Application.routes.draw do
   get 'auth/:destinations/callback' => 'destinations#new_destination_service'
   get 'destinations/facebook_page/:facebook_id' => 'destinations#list_facebook_page' 
   get 'destinations/facebook_page/:facebook_id/add/:uid' => 'destinations#add_facebook_page', as: :add_fb_page
+  get '/destinations/wordpress/new'  => 'destinations#wordpress_new'
+  post '/destinations/wordpress'  => 'destinations#wordpress_create', as: :wordpress_create
 
   resources :destinations do 
     member do
