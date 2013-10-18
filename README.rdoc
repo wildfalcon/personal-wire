@@ -15,3 +15,9 @@ Upload your photos, and have them published to various online platforms on a reg
 
 1. Set up your FB App Details
   
+visit https://developers.facebook.com/apps > apps > create new app
+Fill out details
+On the Settings > Basic page you can see your AppID and AppSecret
+
+        heroku config:set FB_ID=<app-id>
+        heroku config:set FB_SECRET=<app-secret>

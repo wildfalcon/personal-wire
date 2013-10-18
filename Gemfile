@@ -6,7 +6,13 @@ gem 'rails', '4.0.0'
 gem 'rails_12factor', group: :production
 gem 'dragonfly', git: "https://github.com/markevans/dragonfly", ref: "a8597eded3465063673dc6224f6e81c8c27dae11"
 gem 'dragonfly-s3_data_store', git: "https://github.com/markevans/dragonfly-s3_data_store", ref: "f38507f4ac42d63e8d03cf67aa0fe55f43adf240"
+gem 'facepost', git: "https://github.com/wildfalcon/Facepost", ref: "ba7dff9c35158f21aff383001d24e1e707264825"
 gem 'rack-cache'
+
+gem 'omniauth'
+gem 'omniauth-facebook'
+
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 

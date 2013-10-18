@@ -1,9 +1,22 @@
 PersonalWire::Application.routes.draw do
 
+  get "destinations/create"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   root 'home#index'
+
+  get 'auth/:destinations/callback' => 'destinations#new_destination_service'
+  get 'destinations/facebook_page/:facebook_id' => 'destinations#list_facebook_page' 
+  get 'destinations/facebook_page/:facebook_id/add/:uid' => 'destinations#add_facebook_page', as: :add_fb_page
+
+  resources :destinations do 
+    member do
+      get :enable
+      get :disable
+    end
+    
+  end
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
