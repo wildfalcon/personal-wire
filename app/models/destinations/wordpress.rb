@@ -24,7 +24,10 @@ class Destinations::Wordpress < ActiveRecord::Base
   end
 
 
-  def post(photo, title = "New Photo", caption = "New photo uploaded")
+  def post!(photo)
+    title = photo.title || "New Post"
+    caption = photo.caption || "New Photo"
+    
     wp = Rubypress::Client.new(:host => host,
                                :username => username,
                                :password => password)
@@ -39,15 +42,24 @@ class Destinations::Wordpress < ActiveRecord::Base
                                              :type => photo.photo.send(:job).mime_type,
                                              :bits => XMLRPC::Base64.new(photo.photo.data)})
     image_id = image_response["id"]
+    
 
     # Now make a post, using the image
-    post_response = wp.newPost(:blog_id => blog_id,
-                               :username => username,
-                               :password => password,
-                               :content => {:post_title => title,
-                                            :post_content=> caption,
-                                            :post_thumbnail => image_id,
-                                            :post_status => "publish"})
+    post_id = wp.newPost(:blog_id => blog_id,
+                         :username => username,
+                         :password => password,
+                         :content => {:post_title => title,
+                                      :post_content=> caption,
+                                      :post_thumbnail => image_id,
+                                      :post_status => "publish"})
+                                      
+    post_data = wp.getPost(:blog_id => blog_id,
+                        :username => username,
+                        :password => password,
+                        :post_id => post_id)
+
+    # URL (if any), and entire result
+    return post_data["link"], post_data
 
   end
 end

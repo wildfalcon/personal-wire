@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  photo_id: 1
+  destination_id: 1
+  response: MyString
+
+two:
+  photo_id: 1
+  destination_id: 1
+  response: MyString
