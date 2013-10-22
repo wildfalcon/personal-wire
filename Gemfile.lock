@@ -62,6 +62,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    dropbox-sdk (1.6.2)
+      json
     erubis (2.7.0)
     excon (0.27.6)
     execjs (2.0.2)
@@ -190,6 +192,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   dragonfly!
   dragonfly-s3_data_store!
+  dropbox-sdk
   facepost!
   jbuilder (~> 1.2)
   jquery-rails
