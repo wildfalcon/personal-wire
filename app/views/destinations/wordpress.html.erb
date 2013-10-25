@@ -1,4 +1,4 @@
-<%= form_tag(wordpress_create_path, method: "post") do %>
+<%= form_tag(destination_create_path(:wordpress), method: "post") do %>
   <%= label_tag(:host, "Hostname:") %>
   <%= text_field_tag(:host) %>
   <%= label_tag(:username, "Username:") %>

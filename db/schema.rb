@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20131023112458) do
     t.datetime "updated_at"
   end
 
-  create_table "servicess_wordpresses", force: true do |t|
+  create_table "services_wordpresses", force: true do |t|
     t.string   "username"
     t.string   "password"
     t.string   "host"

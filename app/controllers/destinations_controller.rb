@@ -3,7 +3,11 @@ class DestinationsController < ApplicationController
   def new
     destination_name = params[:service]
     destination = Services.destinations.select{|d| d.service_name == destination_name}.first
-    redirect_to destination.new_redirect_path
+    if destination.respond_to?(:new_redirect_path)
+      redirect_to destination.new_redirect_path
+    else
+      render destination_name
+    end
   end
   
   def create
@@ -12,43 +16,16 @@ class DestinationsController < ApplicationController
     destination.create_service(params, env["omniauth.auth"])
     redirect_to root_path
   end
-
-
-
-
-
-
-
-
-  def new_destination_service
-    user_hash = env["omniauth.auth"]
-    provider = user_hash["provider"]
-    Services.find_by_provider(provider).first.register(user_hash)
-    redirect_to root_path
-  end
   
+  
+    
   def list_facebook_page
     @facebook_id = params[:facebook_id]
     facebook = Destinations::Facebook.find(@facebook_id)
     @pages = facebook.pages
   end
   
-  def wordpress_new
-  end
   
-  def wordpress_create
-    host = params[:host]
-    username = params[:username]
-    password = params[:password]
-    
-    
-    wordpress = Destinations::Wordpress.find_or_create_by_host(host)
-    wordpress.create_destination unless wordpress.destination.present?
-    wordpress.username = username
-    wordpress.password = password
-    wordpress.save
-    redirect_to root_path
-  end
   
   
   def add_facebook_page

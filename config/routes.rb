@@ -3,6 +3,7 @@ PersonalWire::Application.routes.draw do
 
   get "destinations/:service/new" => "destinations#new"
   get 'auth/:service/callback' => 'destinations#create'
+  post "destinations/:service" => "destinations#create", as: :destination_create
 
   get 'sources/dropbox/new' => 'sources#dropbox_new', as: :dropbox_new
   get 'sources/dropbox/create' => 'sources#dropbox_create', as: :dropbox_create
