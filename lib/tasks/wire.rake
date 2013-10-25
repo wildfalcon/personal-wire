@@ -16,17 +16,17 @@ task :post_a_photo => :environment do
   photo = Photo.unpublished.first.post!
 end
 
-# desc "Import some sample photos"
-# task :import_dropbox_photos => :environment do
-#   require 'nokogiri'
-#   require 'open-uri'
-#   url = "https://www.dropbox.com/sh/bfys3adirsyl7kj/HoMDzYvQd3/nb-demo"
-#   doc = Nokogiri::HTML(open(url))
-#   urls = doc.css("img").map{|node| node.attr("href")}
+desc "Import some sample photos"
+task :import_dropbox_photos => :environment do
+  require 'nokogiri'
+  require 'open-uri'
+  url = "https://www.dropbox.com/sh/bfys3adirsyl7kj/HoMDzYvQd3/nb-demo"
+  doc = Nokogiri::HTML(open(url))
+  urls = doc.css("img").map{|node| node.attr("src")}
 #   # puts urls.class
 #   # puts urls.inspect
-#   urls = urls.compact.select{|u| u.match(/jpg/)}.uniq
-#   # puts urls
+  urls = urls.compact.select{|u| u.match(/jpg/)}.uniq
+   puts urls
 #   
 #    
 #    urls.each do |url|
@@ -34,4 +34,4 @@ end
 #      p.photo_url = url
 #      p.save
 #   end 
-# end
+end

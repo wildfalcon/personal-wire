@@ -9,6 +9,7 @@ gem 'dragonfly-s3_data_store', git: "https://github.com/markevans/dragonfly-s3_d
 gem 'facepost', git: "https://github.com/wildfalcon/Facepost", ref: "ba7dff9c35158f21aff383001d24e1e707264825"
 gem 'rack-cache'
 gem 'rubypress'
+gem 'dropbox-sdk'
 gem 'omniauth'
 gem 'omniauth-facebook'
 

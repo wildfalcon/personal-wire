@@ -28,7 +28,7 @@ class Destinations::Facebook < ActiveRecord::Base
     facebook.save
   end
   
-    has_one :destination, as: :destination_strategy
+  has_one :destination, as: :destination_strategy
   
   def destination_name
     "#{self.class.service_name} - #{name}"

@@ -13,10 +13,21 @@ module Services
   end
   
   def self.services
+    destinations+sources
+  end
+  
+  def self.destinations
     path = File.join(Rails.root, "app", "models", "destinations", "*")
     Dir.glob(path).map do |file| 
       File.basename(file, '.rb').camelize
-    end.map{|c| Destinations.const_get(c)}
+    end.map{|c| Destinations.const_get(c, false)}
+  end
+
+  def self.sources
+    path = File.join(Rails.root, "app", "models", "sources", "*")
+    sources = Dir.glob(path).map do |file| 
+      File.basename(file, '.rb').camelize
+    end.map{|c| Sources.const_get(c, false)}
   end
   
 end
