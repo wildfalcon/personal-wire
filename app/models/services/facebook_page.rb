@@ -1,6 +1,6 @@
-class Destinations::FacebookPage < ActiveRecord::Base
+class Services::FacebookPage < ActiveRecord::Base
   def self.available?
-    Destinations::Facebook.count > 0
+    Services::Facebook.count > 0
   end
 
   def self.service_name
@@ -9,8 +9,8 @@ class Destinations::FacebookPage < ActiveRecord::Base
   
   def self.config_path
     paths = {} 
-    Destinations::Facebook.all.each do |fb|
-      paths[fb.name] = "/destinations/facebook_page/#{fb.id}"
+    Services::Facebook.all.each do |fb|
+      paths["Add Destination: #{fb.name}"] = "/destinations/facebook_page/new/#{fb.id}"
     end
     paths
   end

@@ -1,4 +1,4 @@
-class Destinations::Wordpress < ActiveRecord::Base
+class Services::Wordpress < ActiveRecord::Base
 
   def self.available?
     true
@@ -13,7 +13,7 @@ class Destinations::Wordpress < ActiveRecord::Base
   end
 
   def self.config_path
-    {"config" => "/destinations/wordpress/new"}
+    {"Add Destination" => "/destinations/wordpress/new"}
   end
 
 

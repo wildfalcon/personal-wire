@@ -1,6 +1,6 @@
-class CreateDestinationsWordpresses < ActiveRecord::Migration
+class CreateServicesWordpresses < ActiveRecord::Migration
   def change
-    create_table :destinations_wordpresses do |t|
+    create_table :servicess_wordpresses do |t|
       t.string :username
       t.string :password
       t.string :host

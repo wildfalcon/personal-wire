@@ -1,4 +1,25 @@
 class DestinationsController < ApplicationController
+
+  def new
+    destination_name = params[:service]
+    destination = Services.destinations.select{|d| d.service_name == destination_name}.first
+    redirect_to destination.new_redirect_path
+  end
+  
+  def create
+    destination_name = params[:service]
+    destination = Services.destinations.select{|d| d.service_name == destination_name}.first
+    destination.create_service(params, env["omniauth.auth"])
+    redirect_to root_path
+  end
+
+
+
+
+
+
+
+
   def new_destination_service
     user_hash = env["omniauth.auth"]
     provider = user_hash["provider"]

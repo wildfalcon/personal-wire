@@ -1,16 +1,13 @@
 PersonalWire::Application.routes.draw do
-
-  get "destinations/create"
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
   root 'home#index'
 
+  get "destinations/:service/new" => "destinations#new"
+  get 'auth/:service/callback' => 'destinations#create'
 
   get 'sources/dropbox/new' => 'sources#dropbox_new', as: :dropbox_new
   get 'sources/dropbox/create' => 'sources#dropbox_create', as: :dropbox_create
 
-  get 'auth/:destinations/callback' => 'destinations#new_destination_service'
+
   get 'destinations/facebook_page/:facebook_id' => 'destinations#list_facebook_page' 
   get 'destinations/facebook_page/:facebook_id/add/:uid' => 'destinations#add_facebook_page', as: :add_fb_page
   get '/destinations/wordpress/new'  => 'destinations#wordpress_new'

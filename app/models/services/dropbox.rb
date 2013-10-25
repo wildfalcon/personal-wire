@@ -1,4 +1,4 @@
-class Sources::Dropbox < ActiveRecord::Base
+class Services::Dropbox < ActiveRecord::Base
   require 'dropbox_sdk'
   
   SESSION = {}
@@ -12,7 +12,7 @@ class Sources::Dropbox < ActiveRecord::Base
   end
 
   def self.config_path
-    {"config" => "sources/dropbox/new"}
+    {"Add Source" => "sources/dropbox/new"}
   end
 
   def self.flow
