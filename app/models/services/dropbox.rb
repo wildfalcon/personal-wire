@@ -8,7 +8,11 @@ class Services::Dropbox < ActiveRecord::Base
   end
 
   def self.service_name
-    "Dropbox"
+    "dropbox"
+  end
+
+  def self.source?
+    true
   end
 
   def self.config_path
@@ -22,11 +26,11 @@ class Services::Dropbox < ActiveRecord::Base
                                     SESSION, :csrf)
   end
 
-  def self.auth_url
+  def self.new_redirect_path
     flow.start()
   end
   
-  def self.finish(params)
+  def self.create_service(params, hash=nil)
     token, uid, state = flow.finish(params)
     
     dropbox = self.find_or_create_by_uid(uid)
@@ -34,9 +38,12 @@ class Services::Dropbox < ActiveRecord::Base
     dropbox.token = token
     dropbox.uid = uid
     dropbox.save
+    dropbox
   end
   
   has_one :source, as: :source_strategy
+  
+  attr_accessible :path
   
   def client
     DropboxClient.new(token)

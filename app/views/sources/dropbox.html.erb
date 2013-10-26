@@ -1,0 +1,5 @@
+<%= form_for @strategy, url: source_path(@strategy.source), method: :put do |f| %>
+	<%= f.label :path %>
+	<%= f.text_field :path %>
+	<%= f.submit "Update #{@strategy.class.service_name}" %>
+<% end %>

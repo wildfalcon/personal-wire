@@ -5,11 +5,20 @@ PersonalWire::Application.routes.draw do
   get 'auth/:service/callback' => 'destinations#create'
   post "destinations/:service(/:service_id)" => "destinations#create", as: :destination_create
 
+  get 'sources/:service/new' => 'sources#new'
+  get 'sources/:service/create' => 'sources#create'
 
   resources :destinations do 
     member do
       get :enable
       get :disable
+    end
+  end
+
+  resources :sources do 
+    member do
+      get :enable
+      get :disable      
     end
     
   end
