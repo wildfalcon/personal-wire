@@ -1,4 +1,4 @@
-class Sources::Dropbox < ActiveRecord::Base
+class Services::Dropbox < ActiveRecord::Base
   require 'dropbox_sdk'
   
   SESSION = {}
@@ -8,11 +8,15 @@ class Sources::Dropbox < ActiveRecord::Base
   end
 
   def self.service_name
-    "Dropbox"
+    "dropbox"
+  end
+
+  def self.source?
+    true
   end
 
   def self.config_path
-    {"config" => "sources/dropbox/new"}
+    {"Add Source" => "sources/dropbox/new"}
   end
 
   def self.flow
@@ -22,11 +26,11 @@ class Sources::Dropbox < ActiveRecord::Base
                                     SESSION, :csrf)
   end
 
-  def self.auth_url
+  def self.new_redirect_path
     flow.start()
   end
   
-  def self.finish(params)
+  def self.create_service(params, hash=nil)
     token, uid, state = flow.finish(params)
     
     dropbox = self.find_or_create_by_uid(uid)
@@ -34,12 +38,24 @@ class Sources::Dropbox < ActiveRecord::Base
     dropbox.token = token
     dropbox.uid = uid
     dropbox.save
+    dropbox
   end
   
   has_one :source, as: :source_strategy
   
+  attr_accessible :path
+  
+  def source_name
+    "#{self.class.service_name} - #{account_name} - #{path}"
+  end
+  
+  
   def client
     DropboxClient.new(token)
+  end
+  
+  def account_name
+    account["display_name"]
   end
   
   def account

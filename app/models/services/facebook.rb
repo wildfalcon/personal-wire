@@ -1,25 +1,29 @@
-class Destinations::Facebook < ActiveRecord::Base
+class Services::Facebook < ActiveRecord::Base
 
   def self.available?
     ENV['FB_ID'].present? && ENV['FB_SECRET'].present?
   end
 
   def self.service_name
-    "Facebook"
-  end
-  
-  def self.provider_name
     "facebook"
   end
   
-  def self.config_path
-    {"config" => "/auth/facebook"}
+  def self.destination?
+    true
   end
   
-  def self.register(user_hash)
-    name = user_hash["info"]["name"]
-    uid = user_hash["uid"]
-    token = user_hash["credentials"]["token"]
+  def self.new_redirect_path
+    "/auth/facebook"
+  end
+    
+  def self.config_path
+    {"Add Destination" => "/destinations/facebook/new"}
+  end
+  
+  def self.create_service(params, omniauth_hash)
+    name = omniauth_hash["info"]["name"]
+    uid = omniauth_hash["uid"]
+    token = omniauth_hash["credentials"]["token"]
     
     facebook = self.find_or_create_by_uid(uid)
     facebook.create_destination unless facebook.destination.present?
@@ -27,6 +31,8 @@ class Destinations::Facebook < ActiveRecord::Base
     facebook.name = name
     facebook.save
   end
+  
+  
   
   has_one :destination, as: :destination_strategy
   

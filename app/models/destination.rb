@@ -1,5 +1,4 @@
 class Destination < ActiveRecord::Base
-
   
   # Scopes
   scope :enabled, -> { where(enabled: true) }

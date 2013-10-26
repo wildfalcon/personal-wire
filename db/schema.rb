@@ -24,30 +24,6 @@ ActiveRecord::Schema.define(version: 20131023112458) do
     t.datetime "updated_at"
   end
 
-  create_table "destinations_facebook_pages", force: true do |t|
-    t.string   "name"
-    t.string   "uid"
-    t.string   "token"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "destinations_facebooks", force: true do |t|
-    t.string   "name"
-    t.string   "uid"
-    t.string   "token"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "destinations_wordpresses", force: true do |t|
-    t.string   "username"
-    t.string   "password"
-    t.string   "host"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "photos", force: true do |t|
     t.string   "photo_uid"
     t.string   "title"
@@ -66,18 +42,42 @@ ActiveRecord::Schema.define(version: 20131023112458) do
     t.datetime "updated_at"
   end
 
-  create_table "sources", force: true do |t|
-    t.integer  "source_strategy_id"
-    t.string   "source_strategy_type"
-    t.boolean  "enabled"
+  create_table "services_dropboxes", force: true do |t|
+    t.integer  "uid"
+    t.string   "token"
+    t.string   "path"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "sources_dropboxes", force: true do |t|
-    t.integer  "uid"
+  create_table "services_facebook_pages", force: true do |t|
+    t.string   "name"
+    t.string   "uid"
     t.string   "token"
-    t.string   "path"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "services_facebooks", force: true do |t|
+    t.string   "name"
+    t.string   "uid"
+    t.string   "token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "services_wordpresses", force: true do |t|
+    t.string   "username"
+    t.string   "password"
+    t.string   "host"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sources", force: true do |t|
+    t.integer  "source_strategy_id"
+    t.string   "source_strategy_type"
+    t.boolean  "enabled",              default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,19 +1,33 @@
-class Destinations::Wordpress < ActiveRecord::Base
+class Services::Wordpress < ActiveRecord::Base
 
   def self.available?
     true
   end
 
   def self.service_name
-    "Wordpress"
+    "wordpress"
   end
 
-  def self.provider_name
-
+  def self.destination?
+    true
   end
 
   def self.config_path
-    {"config" => "/destinations/wordpress/new"}
+    {"Add Destination" => "/destinations/wordpress/new"}
+  end
+
+  def self.create_service(params, auth=nil)
+    host = params[:host]
+    username = params[:username]
+    password = params[:password]
+    
+    
+    wordpress = find_or_create_by_host(host)
+    wordpress.create_destination unless wordpress.destination.present?
+    wordpress.username = username
+    wordpress.password = password
+    wordpress.save
+
   end
 
 

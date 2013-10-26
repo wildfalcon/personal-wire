@@ -1,6 +1,6 @@
-class CreateDestinationsFacebooks < ActiveRecord::Migration
+class CreateServicesFacebookPages < ActiveRecord::Migration
   def change
-    create_table :destinations_facebooks do |t|
+    create_table :services_facebook_pages do |t|
       t.string :name
       t.string :uid
       t.string :token

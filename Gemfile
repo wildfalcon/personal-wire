@@ -12,6 +12,7 @@ gem 'rubypress'
 gem 'dropbox-sdk'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem "protected_attributes"
 
 
 # Use postgresql as the database for Active Record
