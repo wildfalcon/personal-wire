@@ -9,6 +9,12 @@
 <body>
   
   <div id="menu">
+	  <h1>Sources</h1>
+    <%= content_tag(:h2, "Enabled Sources") %>
+    <%= display_enabled_sources %>
+    <%= content_tag(:h2, "Configured Sources") %>
+    <%= display_configured_sources %>
+  
     <h1>Destinations</h1>
     <%= content_tag(:h2, "Enabled Destinations") %>
     <%= display_enabled_destinations %>
@@ -18,8 +24,6 @@
 		<h1>Services</h1>
     <%= content_tag(:h2, "Available Services") %>
     <%= display_available_services %>
-    <%= content_tag(:h2, "Unvailable Services") %>
-    <%= display_unavailable_services %>
   </div>
 
 <h1>Page Starts Here</h1>

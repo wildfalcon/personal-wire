@@ -18,13 +18,5 @@ module ServicesHelper
      end
       
 
-  def display_unavailable_services
-    content_tag(:ul) do
-      Services.unavailable.each  do |service|
-        name = service.service_name
-        concat(content_tag(:li, name))
-      end.join('').html_safe
-    end
-  end
   
 end

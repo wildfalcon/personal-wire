@@ -45,8 +45,17 @@ class Services::Dropbox < ActiveRecord::Base
   
   attr_accessible :path
   
+  def source_name
+    "#{self.class.service_name} - #{account_name} - #{path}"
+  end
+  
+  
   def client
     DropboxClient.new(token)
+  end
+  
+  def account_name
+    account["display_name"]
   end
   
   def account
