@@ -1,18 +1,10 @@
 PersonalWire::Application.routes.draw do
   root 'home#index'
 
-  get "destinations/:service/new" => "destinations#new"
+  get "destinations/:service/new(/:service_id)" => "destinations#new"
   get 'auth/:service/callback' => 'destinations#create'
-  post "destinations/:service" => "destinations#create", as: :destination_create
+  post "destinations/:service(/:service_id)" => "destinations#create", as: :destination_create
 
-  get 'sources/dropbox/new' => 'sources#dropbox_new', as: :dropbox_new
-  get 'sources/dropbox/create' => 'sources#dropbox_create', as: :dropbox_create
-
-
-  get 'destinations/facebook_page/:facebook_id' => 'destinations#list_facebook_page' 
-  get 'destinations/facebook_page/:facebook_id/add/:uid' => 'destinations#add_facebook_page', as: :add_fb_page
-  get '/destinations/wordpress/new'  => 'destinations#wordpress_new'
-  post '/destinations/wordpress'  => 'destinations#wordpress_create', as: :wordpress_create
 
   resources :destinations do 
     member do

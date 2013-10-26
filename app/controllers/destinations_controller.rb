@@ -6,6 +6,7 @@ class DestinationsController < ApplicationController
     if destination.respond_to?(:new_redirect_path)
       redirect_to destination.new_redirect_path
     else
+      set_instance_variables(destination)
       render destination_name
     end
   end
@@ -16,39 +17,15 @@ class DestinationsController < ApplicationController
     destination.create_service(params, env["omniauth.auth"])
     redirect_to root_path
   end
-  
-  
-    
-  def list_facebook_page
-    @facebook_id = params[:facebook_id]
-    facebook = Destinations::Facebook.find(@facebook_id)
-    @pages = facebook.pages
+     
+  def set_instance_variables(destination)
+    if destination.respond_to?(:set_new_view_variables)
+      vars = destination.set_new_view_variables(params[:service_id])
+      vars.each do |name, value|
+        instance_variable_set(("@#{name}").to_sym, value)
+      end
+    end
   end
-  
-  
-  
-  
-  def add_facebook_page
-    @facebook_id = params[:facebook_id]
-    @page_uid = params[:uid]
-    facebook = Destinations::Facebook.find(@facebook_id)
-    pages = facebook.pages
-    page = pages.select{|p| p[:uid]==@page_uid}.first
-
-    uid = page[:uid]
-    name = page[:name]
-    token = page[:token]
-
-    facebook_page = Destinations::FacebookPage.find_or_create_by_uid(uid)
-    facebook_page.create_destination unless facebook_page.destination.present?
-    facebook_page.token = token
-    facebook_page.name = name
-    facebook_page.save
-    redirect_to root_path
-    
-
-  end
-    
   
   def enable
     destination = Destination.find_by_id params[:id]

@@ -1,0 +1,7 @@
+<ul>
+<% @pages.each do |page| %>
+  
+  <li><%= button_to page[:name], destination_create_path(:facebook_page, page[:uid], :facebook_id => @facebook_id ) %></li>
+  
+  <% end %>
+</ul>
