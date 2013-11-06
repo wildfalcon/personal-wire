@@ -15,7 +15,7 @@ class Destination < ActiveRecord::Base
   # Class methods
   def self.primary
     enabled.select do |d| 
-      d.destination_strategy.class.to_s == "Destinations::Wordpress"
+      d.destination_strategy.class.to_s == "Services::Wordpress"
     end.first
   end
   
