@@ -9,9 +9,9 @@ class Source < ActiveRecord::Base
   has_many :imports
 
   # Delegations
-  delegate :source_name,    to: :source_strategy
-  delegate :list_file_keys, to: :source_strategy
-  delegate :get_photo_file, to: :source_strategy
+  delegate :source_name,             to: :source_strategy
+  delegate :list_file_keys,          to: :source_strategy
+  delegate :get_photo_file_and_name, to: :source_strategy
   
   def build_imports!
     list_file_keys.each do |key|

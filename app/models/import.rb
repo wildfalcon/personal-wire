@@ -11,9 +11,10 @@ class Import < ActiveRecord::Base
 
   def import_photo!
     return if photo.present?
-    photo_file = source.get_photo_file(key)
-    photo = build_photo
+    photo_file, photo_name = source.get_photo_file_and_name(key)
+    build_photo
     photo.photo = photo_file
+    photo.photo.name = photo_name
     save
   end
 end

@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20131106102448) do
   create_table "sources", force: true do |t|
     t.integer  "source_strategy_id"
     t.string   "source_strategy_type"
-    t.boolean  "enabled",              default: false
+    t.boolean  "enabled"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

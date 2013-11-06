@@ -68,8 +68,8 @@ class Services::Dropbox < ActiveRecord::Base
     end
   end
   
-  def get_photo_file(key)
+  def get_photo_file_and_name(key)
     contents, metadata = client.get_file_and_metadata key
-    return contents
+    return contents, File.basename(key)
   end  
 end
