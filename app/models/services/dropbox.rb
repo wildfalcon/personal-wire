@@ -62,19 +62,14 @@ class Services::Dropbox < ActiveRecord::Base
     client.account_info
   end
   
-  def list_files
-    client.metadata(path)["contents"]
-  end
-  
-  def import_photos
-    list_files.each do |file|
-      file_path = file["path"]
-      contents, metadata = client.get_file_and_metadata file_path
-      
-      p = Photo.new
-       p.photo = contents
-       p.save
-      
+  def list_file_keys
+    client.metadata(path)["contents"].map do |file|
+      file["path"]
     end
   end
+  
+  def get_photo_file(key)
+    contents, metadata = client.get_file_and_metadata key
+    return contents
+  end  
 end

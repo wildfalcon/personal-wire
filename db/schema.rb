@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131023112458) do
+ActiveRecord::Schema.define(version: 20131106102448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 20131023112458) do
     t.integer  "destination_strategy_id"
     t.string   "destination_strategy_type"
     t.boolean  "enabled",                   default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "imports", force: true do |t|
+    t.integer  "photo_id"
+    t.integer  "source_id"
+    t.text     "key"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
