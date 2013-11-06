@@ -22,7 +22,7 @@ class Services::Dropbox < ActiveRecord::Base
   def self.flow
     flow = ::DropboxOAuth2Flow.new(ENV['DROPBOX_KEY'], 
                                    ENV['DROPBOX_SECRET'], 
-                                   "https://personal-wire.dev/sources/dropbox/create",
+                                   "https://#{ENV['APP_HOST']}/sources/dropbox/create",
                                     SESSION, :csrf)
   end
 
