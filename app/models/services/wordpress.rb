@@ -45,8 +45,16 @@ class Services::Wordpress < ActiveRecord::Base
     wp = Rubypress::Client.new(:host => host,
                                :username => username,
                                :password => password)
+                               
 
-    blog_id = wp.getOptions["blog_id"]["value"]
+    # Self hosted instances of wordpress ignore blog_id, 
+    # (if hosted on wordpress.com it may ignore it too, I haven't tested)
+    blog_id = 1
+    opts = wp.getOptions
+    if opts["blog_id"].present?
+      blog_id = opts["blog_id"]["value"]
+    end
+
 
     # First post the image
     image_response = wp.uploadFile(:blog_id => blog_id,
