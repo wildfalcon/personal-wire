@@ -13,6 +13,8 @@ gem 'dropbox-sdk'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem "protected_attributes"
+gem "exifr"
+
 
 
 # Use postgresql as the database for Active Record

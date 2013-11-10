@@ -67,6 +67,7 @@ GEM
     erubis (2.7.0)
     excon (0.27.6)
     execjs (2.0.2)
+    exifr (1.1.3)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     fog (1.16.0)
@@ -195,6 +196,7 @@ DEPENDENCIES
   dragonfly!
   dragonfly-s3_data_store!
   dropbox-sdk
+  exifr
   facepost!
   jbuilder (~> 1.2)
   jquery-rails

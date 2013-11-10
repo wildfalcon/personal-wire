@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106102448) do
+ActiveRecord::Schema.define(version: 20131110173311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,8 +38,9 @@ ActiveRecord::Schema.define(version: 20131106102448) do
     t.string   "caption"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "published",  default: false
+    t.boolean  "published",       default: false
     t.string   "url"
+    t.string   "small_photo_uid"
   end
 
   create_table "postings", force: true do |t|
@@ -85,7 +86,7 @@ ActiveRecord::Schema.define(version: 20131106102448) do
   create_table "sources", force: true do |t|
     t.integer  "source_strategy_id"
     t.string   "source_strategy_type"
-    t.boolean  "enabled"
+    t.boolean  "enabled",              default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
