@@ -2,7 +2,9 @@
 
 desc "Post a single photo"
 task :post_a_photo => :environment do
-  photo = Photo.unpublished.random.first.post!
+  if [1,3,6].include?(Time.now.wday) 
+    photo = Photo.unpublished.random.first.post!
+  end
 end
 
 desc "Import all new photos"
