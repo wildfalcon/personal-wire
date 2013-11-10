@@ -12,6 +12,7 @@ class Photo < ActiveRecord::Base
 
   scope :unpublished, -> { where(published: false) }
   scope :published, -> { where(published: true) }
+  scope :random, -> { order("RANDOM()") }
 
   def post!
     self.url = Destination.primary.post!(self) if Destination.primary.present?

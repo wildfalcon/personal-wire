@@ -2,7 +2,7 @@
 
 desc "Post a single photo"
 task :post_a_photo => :environment do
-  photo = Photo.unpublished.first.post!
+  photo = Photo.unpublished.random.first.post!
 end
 
 desc "Import all new photos"
