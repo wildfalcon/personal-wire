@@ -9,7 +9,7 @@ end
 
 desc "Import all new photos"
 task :import_photos => :environment do
-  Source.all.each do |source|
+  Source.enabled.all.each do |source|
     source.build_imports!
     source.import_photos!
   end
