@@ -21,6 +21,9 @@ Personal Wire is can be run on a free [Heroku](http://heroku.com) Application. F
 
 These instructions show how to install Personal Wire on [Heroku](http://heroku.com). 
 
+If you don't want to install and run Personal Wire yourself, and would be willing to pay $5-$10 / month, then [sign up here](http://eepurl.com/IBFnL). If there is enough interest I may set it up as a service
+
+
 These instructions assume you are using the command line, so are suitable for anyone using Linux or Mac OS X.
 
 Windows users can still use Personal Wire (it doesn't run on your computer - so your operating system doesn't effect the app at all), but I don't have step by step instructions for how to set it up on Windows
