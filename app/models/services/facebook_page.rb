@@ -51,9 +51,10 @@ class Services::FacebookPage < ActiveRecord::Base
 
   def post!(photo)
     title = photo.title
+    caption = "\n\n#{photo.url}"
+
     
-    
-    result = Facepost.post_photo(uid, token, photo.photo, "#{title}")
+    result = Facepost.post_photo(uid, token, photo.photo, "#{title} #{caption}")
 
     # URL (if any), and entire result
     return nil, result
